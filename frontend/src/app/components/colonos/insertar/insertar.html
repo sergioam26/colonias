@@ -1,0 +1,41 @@
+<form [formGroup]="registro" (ngSubmit)="onSubmit()">
+  <label for="nombre">Nombre:</label>
+  <input id="nombre" type="text" formControlName="nombre" />
+  @if (registro.get('nombre')?.touched && registro.get('nombre')?.invalid) {
+    <div style="color: red">El nombre es obligatorio</div>
+  }
+  <br />
+  <br />
+
+  <label for="apellidos">Apellidos:</label>
+  <input id="apellidos" type="text" formControlName="apellidos" />
+  @if (registro.get('apellidos')?.touched && registro.get('apellidos')?.invalid) {
+    <div style="color: red">Los apellidos son obligatorios</div>
+  }
+  <br />
+  <br />
+
+  <label for="edad">Edad:</label>
+  <input id="edad" type="number" formControlName="edad" />
+  @if (registro.get('edad')?.touched && registro.get('edad')?.invalid) {
+    <div style="color: red">La edad debe estar comprendida entre 6 y 120 años</div>
+  }
+  <br />
+  <br />
+
+  <label for="telefono">Teléfono:</label>
+  <input id="telefono" type="text" formControlName="telefono" />
+  @if (registro.get('telefono')?.touched && registro.get('telefono')?.invalid) {
+    <div style="color: red">El teléfono debe estar formado por nueve dígitos</div>
+  }
+
+  <br />
+  <br />
+
+  <label for="observaciones">Observaciones:</label>
+  <textarea id="observaciones" type="text" formControlName="observaciones"></textarea>
+  <br />
+  <br />
+
+  <button type="submit">Enviar</button>
+</form>

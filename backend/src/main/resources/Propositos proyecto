@@ -1,0 +1,15 @@
+
+Dos roles. Admin y Usuario
+	Cada uno con su interfaz
+	
+	
+	
+- Guardar inscripciones de los ultimos 10 años (que se borren automaticamente) Si un colono no se ha inscrito en los ultimos 10 años también se borra.
+
+- El admin puede cambiar precios (Siguientes versiones). En la primera los cambiaré sobre el código, modificar inscripciones, tocarlo todo.
+		Editar colonos, hacer busquedas.
+		
+- Los colonos pueden inscribirse, se generará un id de inscripcion que junto con su dni podrán usar para editar la inscripcion. Solo se puede la del año en vigor.
+
+- Estaría perfecto añadirle una plataforma de pago seguro.
+
