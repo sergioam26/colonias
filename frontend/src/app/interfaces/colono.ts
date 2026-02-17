@@ -4,5 +4,5 @@ export interface Colono {
   apellidos: string;
   edad: number;
   telefono: string;
-  observaciones: string;
+  observaciones: string | null;
 }

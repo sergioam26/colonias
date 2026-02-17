@@ -22,7 +22,9 @@
           <td>{{ colono.telefono }}</td>
           <td>{{ colono.observaciones }}</td>
           <td>
-            <button class="btn btn-sm btn-warning me-1">Editar</button>
+            <button class="btn btn-sm btn-warning me-1" (click)="editarColono(colono.idColono!)">
+              Editar
+            </button>
             <button class="btn btn-sm btn-danger" (click)="borrarColono(colono.idColono!)">
               Borrar
             </button>
@@ -31,4 +33,5 @@
       }
     </tbody>
   </table>
+  <button class="btn btn-sm btn-primary me-1" (click)="insertarColono()">Insertar</button>
 </div>

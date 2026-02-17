@@ -1,9 +1,8 @@
 form {
-  max-width: 400px;
+  max-width: 500px;
   width: 90%;
-  max-height: 70vh;
   margin: 20px auto;
-  padding: 20px;
+  padding: 12px 15px;
   background-color: #f9f9f9;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -13,22 +12,32 @@ form {
 
 label {
   display: block;
-  margin-bottom: 5px;
+
   font-weight: bold;
   color: #333;
+  margin-bottom: 2px;
+  font-size: 13px;
 }
 
 input[type='text'],
 input[type='number'],
 textarea {
+  display: block;
   width: 100%;
-  padding: 8px 10px;
-  margin-bottom: 15px;
+  padding: 6px 8px; /* acolchado interno para que el contenido no toque el borde */
+  margin-bottom: 2px;
   border: 1px solid #ccc;
   border-radius: 5px;
   box-sizing: border-box;
-  font-size: 14px;
-  transition: border-color 0.3s;
+  font-size: 13px;
+  resize: vertical;
+  min-height: 28px;
+}
+
+textarea {
+  min-height: 60px; /* altura inicial más compacta */
+  max-height: 100px; /* evita que se haga gigante */
+  overflow-y: auto; /* scroll solo dentro del textarea */
 }
 
 input:focus,
@@ -37,26 +46,29 @@ textarea:focus {
   outline: none;
 }
 
-button {
-  display: block;
-  margin: 0 auto;
-  padding: 10px 20px;
+.botones {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 0px;
+}
+.botones button {
+  padding: 6px 15px;
   background-color: #007bff;
   color: white;
-  padding: 10px 20px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  font-size: 14px;
-  transition: backgorund-color 0.3s;
-  hover {
-    background-color: #0056b3;
-  }
+  font-size: 13px;
+  transition: background-color 0.3s;
 }
 
+.botones button:hover {
+  background-color: #0056b3;
+}
 div[style*='color:red'] {
-  font-size: 13px;
+  font-size: 12px;
   color: red;
-  margin-top: -10px;
-  margin-bottom: 10px;
+  margin-top: 2px;
+  margin-bottom: 5px;
 }

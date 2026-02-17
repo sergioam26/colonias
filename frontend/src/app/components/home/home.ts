@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
+import { ListarColono } from '../colonos/listar/listar';
 
 @Component({
   selector: 'app-home',
-  imports: [],
+  imports: [ListarColono],
   templateUrl: './home.html',
   styleUrl: './home.css',
 })
-export class Home {
-
-}
+export class HomeColono {}

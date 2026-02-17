@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Colono } from '../../../interfaces/colono';
 import { ColonoService } from '../../../services/colono';
 
@@ -12,7 +13,10 @@ import { ColonoService } from '../../../services/colono';
 export class ListarColono implements OnInit {
   colonos: Colono[] = [];
 
-  constructor(private colonoService: ColonoService) {}
+  constructor(
+    private colonoService: ColonoService,
+    private router: Router,
+  ) {}
   ngOnInit() {
     this.cargarColonos();
   }
@@ -37,5 +41,12 @@ export class ListarColono implements OnInit {
         },
       });
     }
+  }
+  editarColono(id: number) {
+    this.router.navigate(['colonos/editar', id]);
+  }
+
+  insertarColono() {
+    this.router.navigate(['/colonos/insertar']);
   }
 }

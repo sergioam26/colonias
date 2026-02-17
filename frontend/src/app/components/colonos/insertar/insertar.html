@@ -37,5 +37,8 @@
   <br />
   <br />
 
-  <button type="submit">Enviar</button>
+  <div class="botones">
+    <button type="submit">{{ modoEdicion ? 'Actualizar' : 'Enviar' }}</button>
+    <button (click)="volver()">Volver</button>
+  </div>
 </form>
