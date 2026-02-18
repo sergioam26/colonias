@@ -38,6 +38,9 @@ public class InscripcionService {
         i.setTurno(turno);
         i.setFechaInscripcion(LocalDate.now());
 
+        colono.setInscrito(true);
+        colonoRepo.save(colono);
+
         return inscripcionRepo.save(i);
     }
 
@@ -65,6 +68,8 @@ public class InscripcionService {
     	//Borramos inscripción
     	
     	inscripcionRepo.deleteById(id);
+        colono.setInscrito(false);
+        colonoRepo.save(colono);
     
     }
     

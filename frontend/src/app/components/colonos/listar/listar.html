@@ -25,9 +25,14 @@
             <button class="btn btn-sm btn-warning me-1" (click)="editarColono(colono.idColono!)">
               Editar
             </button>
-            <button class="btn btn-sm btn-danger" (click)="borrarColono(colono.idColono!)">
+            <button class="btn btn-sm btn-danger me-1" (click)="borrarColono(colono.idColono!)">
               Borrar
             </button>
+            @if (colono.inscrito == false) {
+              <button class="btn btn-sm btn-info" (click)="InsertarInscripcion(colono.idColono!)">
+                Inscribir
+              </button>
+            }
           </td>
         </tr>
       }

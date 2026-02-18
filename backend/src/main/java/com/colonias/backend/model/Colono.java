@@ -43,14 +43,13 @@ public class Colono {
 	@OneToOne(mappedBy = "colono", cascade = CascadeType.ALL, orphanRemoval = true)
 	private Inscripcion inscripcion;
 
-	
+	@Column(nullable = false)
+	private boolean inscrito = false;
+
+
 	public Colono() {
 	}
 
-
-	
-	
-	
 
 	public void setIdColono(Integer idColono) {
 		this.idColono = idColono;
@@ -114,8 +113,14 @@ public class Colono {
 		return inscripcion;
 	}
 
-	
-	 
+	public boolean isInscrito() {
+		return inscrito;
+	}
+
+	public void setInscrito(boolean inscrito) {
+		this.inscrito = inscrito;
+	}
+
 	public void setInscripcion(Inscripcion inscripcion) {
 		this.inscripcion = inscripcion;
 	}

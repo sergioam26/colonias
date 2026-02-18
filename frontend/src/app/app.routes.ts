@@ -3,6 +3,8 @@ import { InsertarColono } from './components/colonos/insertar/insertar';
 import { ListarColono } from './components/colonos/listar/listar';
 import { Home } from './components/shared/home/home';
 
+import { ListarInscripcion } from './components/inscripciones/listar/listar';
+
 export const routes: Routes = [
   { path: '', component: Home },
   { path: 'colonos/editar/:id', component: InsertarColono },
@@ -13,4 +15,6 @@ export const routes: Routes = [
   },
 
   { path: 'colonos', component: ListarColono },
+
+  { path: 'inscripciones', component: ListarInscripcion },
 ];

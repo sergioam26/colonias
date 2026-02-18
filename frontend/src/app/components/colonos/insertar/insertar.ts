@@ -33,6 +33,7 @@ export class InsertarColono implements OnInit {
       validators: [Validators.required, Validators.pattern(/^\d{9}$/)],
     }),
     observaciones: new FormControl<string | null>(null),
+    inscrito: new FormControl<boolean>(false),
   });
 
   constructor(
@@ -55,6 +56,7 @@ export class InsertarColono implements OnInit {
             edad: colono.edad ?? 0,
             telefono: colono.telefono || '',
             observaciones: colono.observaciones ?? null,
+            inscrito: !!colono.inscrito,
           });
 
           // Deshabilitamos nombre y apellidos
@@ -68,9 +70,19 @@ export class InsertarColono implements OnInit {
   }
 
   onSubmit() {
+    const raw = this.registro.getRawValue();
+    const colonoAEnviar = {
+      nombre: raw.nombre,
+      apellidos: raw.apellidos,
+      edad: raw.edad,
+      telefono: raw.telefono,
+      observaciones: raw.observaciones ?? '', // evita null
+      inscrito: !!raw.inscrito, // fuerza boolean, evita null
+    };
+
     if (this.registro.valid) {
       if (this.modoEdicion) {
-        this.colonoService.update(this.idColono, this.registro.getRawValue()).subscribe({
+        this.colonoService.update(this.idColono, colonoAEnviar).subscribe({
           next: () => {
             alert('Colono actualizado con éxito ✅');
             this.router.navigate(['/colonos']);
@@ -81,10 +93,17 @@ export class InsertarColono implements OnInit {
           },
         });
       } else {
-        this.colonoService.create(this.registro.getRawValue()).subscribe({
+        this.colonoService.create(colonoAEnviar).subscribe({
           next: () => {
             alert('Colono creado con éxito ✅');
-            this.registro.reset();
+            this.registro.reset({
+              nombre: '',
+              apellidos: '',
+              edad: 0,
+              telefono: '',
+              observaciones: null,
+              inscrito: false,
+            });
             this.router.navigate(['/colonos']);
           },
           error: (err) => {
