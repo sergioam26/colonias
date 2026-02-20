@@ -17,7 +17,7 @@ export class ListarInscripcion implements OnInit {
 
   //Para paginar
   page = 1;
-  pageSize = 9;
+  pageSize = 8;
 
   constructor(
     private inscripcionService: InscripcionService,

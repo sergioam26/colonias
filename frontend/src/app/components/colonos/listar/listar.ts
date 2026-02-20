@@ -14,7 +14,7 @@ import { InscripcionService } from './../../../services/inscripcion';
 export class ListarColono implements OnInit {
   colonos: Colono[] = [];
   page = 1;
-  pageSize = 10;
+  pageSize = 8;
 
   constructor(
     private inscripcionService: InscripcionService,
