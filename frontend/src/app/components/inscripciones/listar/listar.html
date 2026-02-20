@@ -15,7 +15,7 @@
       @for (inscripcion of inscripciones; track inscripcion.idInscripcion) {
         <tr>
           <td>{{ inscripcion.idInscripcion }}</td>
-          <td>{{ inscripcion.idColono }}</td>
+          <td>{{ inscripcion.colono.nombre }} {{ inscripcion.colono.apellidos }}</td>
           <td>{{ inscripcion.turno }}</td>
           <td>{{ inscripcion.precio }}</td>
           <td>{{ inscripcion.fechaInscripcion }}</td>

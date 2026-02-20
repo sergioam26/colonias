@@ -1,8 +1,8 @@
-import { InscripcionService } from './../../../services/inscripcion';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Colono } from '../../../interfaces/colono';
 import { ColonoService } from '../../../services/colono';
+import { InscripcionService } from './../../../services/inscripcion';
 
 @Component({
   selector: 'app-listarColono',
@@ -52,7 +52,7 @@ export class ListarColono implements OnInit {
     this.router.navigate(['/colonos/insertar']);
   }
 
-  InsertarInscripcion(id: number) {
+  insertarInscripcion(id: number) {
     if (confirm('¿Seguro que quieres crear una inscripción para este colono?')) {
       this.inscripcionService.create(id).subscribe({
         next: () => {
@@ -64,5 +64,11 @@ export class ListarColono implements OnInit {
         },
       });
     }
+  }
+
+  inscribirYRecargar(id: number) {
+    this.insertarInscripcion(id);
+    this.cargarColonos();
+    this.router.navigate(['/colonos']);
   }
 }
