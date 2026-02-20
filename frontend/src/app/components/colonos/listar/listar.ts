@@ -13,6 +13,8 @@ import { InscripcionService } from './../../../services/inscripcion';
 })
 export class ListarColono implements OnInit {
   colonos: Colono[] = [];
+  page = 1;
+  pageSize = 10;
 
   constructor(
     private inscripcionService: InscripcionService,
@@ -57,6 +59,7 @@ export class ListarColono implements OnInit {
       this.inscripcionService.create(id).subscribe({
         next: () => {
           alert('Inscripción creada con éxito✅');
+          this.cargarColonos();
         },
         error: (err) => {
           console.error('Error al insertar inscripción', err);
@@ -66,9 +69,8 @@ export class ListarColono implements OnInit {
     }
   }
 
-  inscribirYRecargar(id: number) {
-    this.insertarInscripcion(id);
-    this.cargarColonos();
-    this.router.navigate(['/colonos']);
+  get colonosPaginados() {
+    const start = (this.page - 1) * this.pageSize;
+    return this.colonos.slice(start, start + this.pageSize);
   }
 }

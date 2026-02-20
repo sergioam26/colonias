@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Colono } from '../../../interfaces/colono';
-import { ColonoService } from '../../../services/colono';
+import { Turno } from '../../../interfaces/enums/turno.enum';
 import { Inscripcion } from '../../../interfaces/inscripcion';
 import { InscripcionService } from '../../../services/inscripcion';
 
@@ -14,6 +13,11 @@ import { InscripcionService } from '../../../services/inscripcion';
 })
 export class ListarInscripcion implements OnInit {
   inscripciones: Inscripcion[] = [];
+  turnos: Turno[] = Object.values(Turno);
+
+  //Para paginar
+  page = 1;
+  pageSize = 9;
 
   constructor(
     private inscripcionService: InscripcionService,
@@ -43,5 +47,16 @@ export class ListarInscripcion implements OnInit {
         },
       });
     }
+  }
+  listarPorTurno(turno: Turno) {
+    this.inscripcionService.getByTurno(turno).subscribe({
+      next: (res) => (this.inscripciones = res),
+      error: (err) => console.error('Error al cargar inscripciones', err),
+    });
+  }
+
+  get inscripcionesPaginadas() {
+    const start = (this.page - 1) * this.pageSize;
+    return this.inscripciones.slice(start, start + this.pageSize);
   }
 }

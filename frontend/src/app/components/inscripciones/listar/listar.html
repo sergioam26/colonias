@@ -1,5 +1,25 @@
 <div class="container mt-4">
-  <h2>Lista de inscripciones</h2>
+  <div class="cabecera">
+    <h2>Lista de inscripciones</h2>
+    <button
+      class="btn btn-sm btn-danger"
+      (click)="cargarInscripciones()"
+      style="margin-right: 10px; padding: 10px; background-color: blueviolet"
+    >
+      TODOS LOS TURNOS
+    </button>
+
+    @for (turno of turnos; track $index) {
+      <button
+        class="btn btn-sm btn-danger"
+        (click)="listarPorTurno(turno)"
+        style="margin-right: 10px; padding: 10px; background-color: blueviolet"
+      >
+        TURNO {{ turno }}
+      </button>
+    }
+  </div>
+
   <table class="table table-striped table-bordered mt-3">
     <thead class="table-dark">
       <tr>
@@ -12,7 +32,7 @@
       </tr>
     </thead>
     <tbody>
-      @for (inscripcion of inscripciones; track inscripcion.idInscripcion) {
+      @for (inscripcion of inscripcionesPaginadas; track inscripcion.idInscripcion) {
         <tr>
           <td>{{ inscripcion.idInscripcion }}</td>
           <td>{{ inscripcion.colono.nombre }} {{ inscripcion.colono.apellidos }}</td>
@@ -32,4 +52,24 @@
       }
     </tbody>
   </table>
+
+  <div class="mt-4" style="text-align: center">
+    <button
+      class="btn btn-sm me-2"
+      (click)="page = page - 1"
+      [disabled]="page === 1"
+      style="margin-right: 15px; color: white; background-color: rgb(61, 47, 151)"
+    >
+      ANTERIOR
+    </button>
+    <span style="color: black; text-align: center; padding: 10px">PÁGINA {{ page }}</span>
+    <button
+      class="btn btn-sm me-2"
+      (click)="page = page + 1"
+      [disabled]="page * pageSize >= inscripciones.length"
+      style="margin-left: 15px; color: white; background-color: rgb(61, 47, 151)"
+    >
+      SIGUIENTE
+    </button>
+  </div>
 </div>
